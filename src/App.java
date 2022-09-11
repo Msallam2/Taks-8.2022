@@ -28,7 +28,21 @@ public class App {
 
 
         MultiplicationQuiz mq = new MultiplicationQuiz();
-        mq.getExcercise();
+    //    mq.getExcercise();
+
+     //   System.out.println();
+
+        TV_Remote tv = new TV_Remote(10);
+        tv.nextChannel();
+        tv.acquireData();
+        tv.nextChannel();
+        tv.nameChannel("Second channel");
+        tv.acquireData();
+
+
+
     }
+
+
 
 }
