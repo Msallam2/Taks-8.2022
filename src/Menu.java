@@ -184,6 +184,37 @@ public class Menu {
         }
     }
 
+
+    public void _TicTacToe(TicTacToe game){
+        try {
+            TicTacToe ttt = game;
+
+            System.out.println("Spieler: " + ttt.getPlayer());
+
+                System.out.println("x Feld eingeben (0 - 2)");
+                String x = sc.nextLine();
+
+                int x1 = Integer.parseInt(x);
+
+
+                System.out.println("y Feld eingeben (0 - 2)");
+                String y = sc.nextLine();
+
+                int y1 = Integer.parseInt(y);
+
+                if (x1 < 0 ^ x1 > 2 || y1 < 0 ^ y1 > 2){
+                    throw new Exception();
+                }
+
+                ttt.setMark(Integer.parseInt(x), Integer.parseInt(y));
+                _TicTacToe(ttt);
+
+        } catch (Exception e){
+            System.out.println("Ein Fehler ist aufgetreten");
+            printMenu();
+        }
+    }
+
     public void printMenu(){
         System.out.println("[1] Stepcounter");
         System.out.println("[2] ModuleScanner");
@@ -193,6 +224,7 @@ public class Menu {
         System.out.println("[6] TV Remote");
         System.out.println("[7] StopWatch");
         System.out.println("[8] PrinterQueue");
+        System.out.println("[9] Tic Tac Toe");
 
         String command = sc.nextLine();
         switch (command){
@@ -204,6 +236,7 @@ public class Menu {
             case "6" : tv_remote(null, false); break;
             case "7" : stopWatch(false); break;
             case "8" : printerQueue(null, false); break;
+            case "9" : _TicTacToe(new TicTacToe()); break;
         }
     }
 }
