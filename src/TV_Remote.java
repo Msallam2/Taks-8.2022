@@ -25,7 +25,9 @@ public class TV_Remote {
 
 
     void nameChannel(String n){
+        String on = channels[current_channel];
         channels[current_channel] = n;
+        System.out.println("Name geändert: " + on + " -> " + n);
     }
     
     void acquireData(){

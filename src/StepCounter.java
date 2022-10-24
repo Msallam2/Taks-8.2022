@@ -9,6 +9,7 @@ public class StepCounter {
         this.steps = 0;
     }
 
+    // steps+= x und nicht steps++, um die Leistung zu verbessern.
     void incrementSteps(int x){
         steps+= x;
     }

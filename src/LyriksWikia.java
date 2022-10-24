@@ -1,6 +1,6 @@
 public class LyriksWikia {
  
-    public static String returnURL(String author, String title){
+    public String returnURL(String author, String title){
         String url = "http://lyrics.wikia.com/api.php?func=getSong";
 
         author = author.toLowerCase();

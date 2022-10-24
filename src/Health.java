@@ -7,13 +7,13 @@ public class Health {
         "fettleibig"
     };
 
-    public static double computeBMI(int m, double i2){
+    public double computeBMI(int m, double i2){
         double weight = m/(i2 * i2);
         sortToCategory(weight);
         return weight;
     }
 
-    public static void sortToCategory(double w){
+    public void sortToCategory(double w){
         String category = categories[0];
 
         if (w < 18.5){
