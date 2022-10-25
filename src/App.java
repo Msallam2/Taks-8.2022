@@ -8,6 +8,20 @@ public class App {
     public static void main(String[] args) throws Exception {
 
 
+        //for (int i = 0; i < 4; i++){
+           // int index = (int) (Math.random() * 6);
+           // chosen_colors[i] = colors[index];
+       // }
+
+       // Mastermind mm = new Mastermind(1,5,3,4);
+
+       // mm.guess(1,5,3,4);
+       // System.out.println("Correct colors: " + mm.guess(1,5,3,4)[0]);
+      //  System.out.println("Correct colors and positions: " + mm.guess(1,4,3,5)[1]);
+
+      //  StiftCipher sc = new StiftCipher(2);
+      //  sc.encipher("KLASSE");
+
         Menu m = new Menu();
         m.printMenu();
 
@@ -24,7 +38,7 @@ public class App {
         //System.out.println(s);
 
         
-        ModuleScanner ms = new ModuleScanner();
+    //    ModuleScanner ms = new ModuleScanner();
 
       //  ms.animatedPronter("" + s, 10);
 

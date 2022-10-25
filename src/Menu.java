@@ -69,6 +69,44 @@ public class Menu {
         }
     }
 
+    public void password(Password password, boolean v){
+        try {
+            Password p = password;
+            if (v == false){
+                System.out.println("Password eingeben");
+                String given = sc.nextLine();
+                char[] g = new char[given.toString().length()];
+                for (int i = 0; i < given.toString().length(); i++){
+                    g[i] = given.charAt(i);
+                }
+                System.out.println("PASS 1/1");
+                p = new Password(g);
+            }
+
+            System.out.println("[1] Password ändern");
+            System.out.println("[2] Password löschen");
+
+            switch (sc.nextLine()){
+                case "1" : {
+                    System.out.println("Neues Password eingeben: (a - z) + (A - Z) + (1 - 9) + (! - *)");
+                    String np = sc.nextLine();
+                    System.out.println("Altes Password eingeben:");
+                    String op = sc.nextLine();
+                    p.changePassword(op.toCharArray(),np.toCharArray());
+                    break;
+                }
+                case "2" : p.deletePassword(); break;
+                default: password(p, true);
+            }
+
+
+        } catch (Exception e){
+            System.out.println(e);
+            System.out.println("Ein Fehler ist aufgetreten");
+            printMenu();
+        }
+    }
+
     public void multiplicationQuiz(){
         try {
 
@@ -371,34 +409,93 @@ public class Menu {
         }
     }
 
+    public void stiftcipher(){
+        try {
+            System.out.println("Key eingeben");
+            String k = sc.nextLine();
+            StiftCipher stiftCipher = new StiftCipher(Integer.parseInt(k));
+            System.out.println("Wort eingeben");
+            String w = sc.nextLine();
+            System.out.println("[1] verschlüsseln");
+            System.out.println("[2] entschlüsseln");
+            switch (sc.nextLine()){
+                case "1" : stiftCipher.encipher(w); break;
+                case "2" : stiftCipher.decipher(w); break;
+                default: printMenu();
+            }
+
+        } catch (Exception e){
+            System.out.println("Ein Fehler ist aufgetreten");
+            printMenu();
+        }
+    }
+
+    public void mastermind(){
+        try {
+            System.out.println("Zufällige Farben generiert");
+            System.out.println("Farbe 1 eingeben: 0: Rot, 1: Grün, 2: Blau, 3: Weiß, 4: Orange, 5: Grau");
+            String f1 = sc.nextLine();
+            System.out.println("Farbe 2 eingeben: 0: Rot, 1: Grün, 2: Blau, 3: Weiß, 4: Orange, 5: Grau");
+            String f2 = sc.nextLine();
+            System.out.println("Farbe 3 eingeben: 0: Rot, 1: Grün, 2: Blau, 3: Weiß, 4: Orange, 5: Grau");
+            String f3 = sc.nextLine();
+            System.out.println("Farbe 4 eingeben: 0: Rot, 1: Grün, 2: Blau, 3: Weiß, 4: Orange, 5: Grau");
+            String f4 = sc.nextLine();
+
+            int[] generated = new int[4];
+            for (int i = 0; i < 4; i++){
+                int index = (int) (Math.random() * 6);
+                generated[i] = index;
+             }
+
+
+            Mastermind mastermind = new Mastermind(generated[0], generated[1], generated[2], generated[3]);
+            System.out.println("Generierte Farben: " + Arrays.toString(mastermind.code));
+            System.out.println("Geschätzte Farben: " + "[" + mastermind.colors[Integer.parseInt(f1)] + ", " + mastermind.colors[Integer.parseInt(f2)] + ", " + mastermind.colors[Integer.parseInt(f3)] + ", " + mastermind.colors[Integer.parseInt(f4)] + "]");
+
+            System.out.println("Correct colors: " + mastermind.guess(Integer.parseInt(f1),Integer.parseInt(f2),Integer.parseInt(f3),Integer.parseInt(f4))[0]);
+            System.out.println("Correct colors and positions: " + mastermind.guess(Integer.parseInt(f1),Integer.parseInt(f2),Integer.parseInt(f3),Integer.parseInt(f4))[1]);
+
+        } catch (Exception e){
+            System.out.println("Ein Fehler ist aufgetreten");
+            printMenu();
+        }
+    }
     public void printMenu(){
         System.out.println("[1] Stepcounter");
         System.out.println("[2] ModuleScanner");
         System.out.println("[3] BMI Rechner");
         System.out.println("[4] Lyrics Wikia");
-        System.out.println("[5] Multiplication Quiz");
-        System.out.println("[6] TV Remote");
-        System.out.println("[7] StopWatch");
-        System.out.println("[8] PrinterQueue");
-        System.out.println("[9] Tic Tac Toe");
-        System.out.println("[10] Clipboard");
-        System.out.println("[11] Temperatur");
-        System.out.println("[12] Ambient Light");
+        System.out.println("[5] Password");
+        System.out.println("[6] Multiplication Quiz");
+        System.out.println("[7] TV Remote");
+        System.out.println("[8] StopWatch");
+        System.out.println("[9] PrinterQueue");
+        System.out.println("[10] Tic Tac Toe");
+        System.out.println("[11] Clipboard");
+        System.out.println("[12] Temperatur");
+        System.out.println("[13] Ambient Light");
+        System.out.println("[14] StiftCipher");
+        System.out.println("[15] Mastermind");
 
         String command = sc.nextLine();
+
         switch (command){
             case "1" : stepCounter(); break;
             case "2" : moduleScanner(); break;
             case "3" : health(); break;
             case "4" : lyricsWikia(); break;
-            case "5" : multiplicationQuiz(); break;
-            case "6" : tv_remote(null, false); break;
-            case "7" : stopWatch(false); break;
-            case "8" : printerQueue(null, false); break;
-            case "9" : _TicTacToe(new TicTacToe()); break;
-            case "10" : clipBoard(null, false); break;
-            case "11" : temperature(null, false); break;
-            case "12" : ambientLight(null, false); break;
+            case "5" : password(null, false); break;
+            case "6" : multiplicationQuiz(); break;
+            case "7" : tv_remote(null, false); break;
+            case "8" : stopWatch(false); break;
+            case "9" : printerQueue(null, false); break;
+            case "10" : _TicTacToe(new TicTacToe()); break;
+            case "11" : clipBoard(null, false); break;
+            case "12" : temperature(null, false); break;
+            case "13" : ambientLight(null, false); break;
+            case "14" : stiftcipher(); break;
+            case "15" : mastermind(); break;
 
             default: printMenu();
         }

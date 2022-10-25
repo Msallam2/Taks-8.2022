@@ -8,6 +8,7 @@ public class Health {
     };
 
     public double computeBMI(int m, double i2){
+        i2 = i2/100;
         double weight = m/(i2 * i2);
         sortToCategory(weight);
         return weight;
