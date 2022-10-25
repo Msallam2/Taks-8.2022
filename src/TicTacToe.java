@@ -58,6 +58,8 @@ public class TicTacToe {
                 temp = temp + "\n";
             }
         }
+
+        checkWinner();
         return temp = temp + "\n";
     }
 
@@ -69,6 +71,52 @@ public class TicTacToe {
             player = "O";
         }
         return player;
+    }
+
+
+    public void printWinner(){
+        if (field[0] == 1){
+            System.out.println("X hat gewonnen");
+            reset();
+        } else if (field[0] == 2){
+            System.out.println("O hat gewonnen");
+            reset();
+        }
+    }
+
+    public void checkWinner(){
+        if (field[0] != 0 && field[1] == field[0] && field[1] == field[2]){
+            printWinner();
+        }
+
+        if (field[3] != 0 && field[4] == field[3] && field[4] == field[5]){
+            printWinner();
+        }
+
+        if (field[6] != 0 && field[7] == field[6] && field[7] == field[8]){
+            printWinner();
+        }
+
+        if (field[0] != 0 && field[3] == field[0] && field[6] == field[3]){
+            printWinner();
+        }
+
+        if (field[1] != 0 && field[4] == field[1] && field[7] == field[4]){
+            printWinner();
+        }
+
+        if (field[2] != 0 && field[5] == field[2] && field[8] == field[5]){
+            printWinner();
+        }
+
+        if (field[0] != 0 && field[4] == field[0] && field[8] == field[4]){
+            printWinner();
+        }
+
+        if (field[2] != 0 && field[4] == field[2] && field[6] == field[4]){
+            printWinner();
+        }
+
     }
 
 }

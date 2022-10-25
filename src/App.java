@@ -1,10 +1,18 @@
 import java.lang.ProcessBuilder.Redirect.Type;
+import java.util.Arrays;
 
 import javax.print.DocFlavor.BYTE_ARRAY;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
+
+        //AmbientLight al = new AmbientLight(0, 0, 50);
+        //for (int i = 0; i < 50; i++) {
+            //al.increaseHelligkeit();
+            //al.increaseSaturation();
+           // System.out.println(Arrays.toString(al.getNextFarbe()));
+       // }
 
         Menu m = new Menu();
         m.printMenu();

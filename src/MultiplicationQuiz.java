@@ -1,10 +1,10 @@
 
 public class MultiplicationQuiz {
     int a , b = 0;
-    int max = 20;
+    long max = 20;
     int delay = 3000;
 
-    public MultiplicationQuiz(int maximum, int zeit){
+    public MultiplicationQuiz(long maximum, int zeit){
         max = maximum;
         delay = zeit;
     }
